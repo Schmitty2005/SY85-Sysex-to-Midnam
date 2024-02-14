@@ -19,6 +19,7 @@ import codecs
 #sysexfile = "vintage2.syx"
 #sysexfile = "factory.syx"
 # Set name of sysex file here.
+
 sysexfile = "vintage1_synthAll.syx"
 midnamoutfile = "patchoutput.midnam"
 
@@ -151,7 +152,8 @@ def BankPrint(sysexfilename): # main meat and potatoes
      cchangemsb =   "     <ControlChange Control = \"0\" Value = \"0\"/>\n"
      cchangelsb =   "     <ControlChange Control = \"32\" Value = \""+BANK_CODE[counter]+"\" />\n" #needs variable for lsb
      Mccomandsend = "</MIDICommands>\n"
-     bankheader = header1 + Mcommands + cchangemsb + cchangelsb + Mccomandsend
+     patchnamestart = "  <PatchNameList>\n"
+     bankheader = header1 + Mcommands + cchangemsb + cchangelsb + Mccomandsend + patchnamestart
      patchheaders.append(bankheader)
      counter=counter + 1
   #Properly create block of patch names with proper header
@@ -162,6 +164,7 @@ def BankPrint(sysexfilename): # main meat and potatoes
      for y in patchesXMLoutput[pblock]:
         xmloutput =xmloutput + y
      pcounter = pcounter + 1
+     xmloutput = xmloutput + ("  <PatchNameList/>\n")
   return xmloutput
 
   
