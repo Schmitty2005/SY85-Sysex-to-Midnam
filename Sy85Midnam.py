@@ -20,8 +20,10 @@ import codecs
 #sysexfile = "factory.syx"
 # Set name of sysex file here.
 
-sysexfile = "vintage1_synthAll.syx"
-midnamoutfile = "patchoutput.midnam"
+sysexfile = "vintage1_synthAll.syx"       #name of SY85 Synth Bulk Sysex Dump
+midnamoutfile = "patchoutput.midnam"      #name of output file
+BANK_PREFIX = "Vintage 1"                 #Bank Name should be name of floppy disk set or similar
+
 
 patchxmlinfo=""
 # Load SY85 Synth  Sysex file as bytearray
@@ -29,7 +31,7 @@ patchxmlinfo=""
 BANKS =("V1", "V2", "V3", "V4", "P1", "P2")# change to more appropriate later
 BANK_CODE = ("00","03", "06", "09", "40", "43") #Hex for LSB of v1, v2,... ...p1, p2
 BANKS_VERBOSE=( "Voice 1", "Voice 2", "Voice 3", "Voice 4", "Performance 1", "Performance 2")
-BANK_PREFIX = "Vintage 1"#set variable with UI later
+
 PATCHBANK_HEADER = "<PatchBank Name=\"" +patchxmlinfo + "\">" # needs bank prefix and bank suffix from v1, v2, etc.
 #Define Global Bank Variable
 BP = list() 
