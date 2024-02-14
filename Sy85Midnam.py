@@ -164,7 +164,8 @@ def BankPrint(sysexfilename): # main meat and potatoes
      for y in patchesXMLoutput[pblock]:
         xmloutput =xmloutput + y
      pcounter = pcounter + 1
-     xmloutput = xmloutput + ("  <PatchNameList/>\n")
+     xmloutput = xmloutput + ("    </PatchNameList>\n  </PatchBank>\n")
+     
   return xmloutput
 
   
