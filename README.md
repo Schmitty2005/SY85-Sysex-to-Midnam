@@ -3,6 +3,7 @@ A python 3 script to convert Yamaha SY85 synth all bulk dump to midnam patch fil
 
 Paste output after :
 
+<!--
 <code>
   </AvailableForChannels>
    
@@ -15,3 +16,8 @@ Paste output after :
   </MasterDeviceNames>
 </MIDINameDocument>
 </code>
+-->
+
+Example Output : 
+
+![Alt text](image.png)
