@@ -164,13 +164,12 @@ def BankPrint(sysexfilename): # main meat and potatoes
      for y in patchesXMLoutput[pblock]:
         xmloutput =xmloutput + y
      pcounter = pcounter + 1
-     xmloutput = xmloutput + ("    </PatchNameList>\n  </PatchBank>\n")
-     
+     xmloutput = xmloutput + ("    </PatchNameList>\n  </PatchBank>\n")   
   return xmloutput
 
   
 xmlout2 = (BankPrint (sysexfile))
 print ("Data wrote to file : ")
-print (xmlout2)
+#print (xmlout2)
 
 savemidnam(xmlout2,midnamoutfile)
