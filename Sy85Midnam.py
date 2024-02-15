@@ -151,7 +151,6 @@ def BankPrint(sysexfilename): # main meat and potatoes
       #needs = BANK_PREFIX + ": " + BANKS[bankcounter] + " " +str(patchnumber).zfill(2) + " " +patch
       xmlout = "     <Patch Number=\""+ needs +"\" ProgramChange=\""+ str(patchnumber-1)+"\"/>\n"
       patchesXMLoutput.append(xmlout)
-      print (needs)
       patchnumber =patchnumber+1
     bankcounter=bankcounter+1
 
