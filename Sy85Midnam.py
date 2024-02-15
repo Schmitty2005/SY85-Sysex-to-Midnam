@@ -46,6 +46,14 @@ perf2slice=slice(320,384)
 
 BANK_SLICES =(voice1slice, voice2slice, voice3slice, voice4slice, perf1slice, perf2slice)
 
+#Create array for patch numbers to resemble SY85 selectors
+def createBankArray():
+    bankfirst=list()
+    for x in "ABCDEFGH":
+        for y in "12345678":
+          bankfirst.append(x + y)
+    return bankfirst
+
 #load a sysex file and return byte array
 def loadSysex(filename):
     try:
@@ -126,6 +134,7 @@ def PatchNamesToXML(patchesList):
 def BankPrint(sysexfilename): # main meat and potatoes
   sysex = loadSysex(sysexfilename)
   patchlist = GetPatchNames(sysex)
+  pnum=createBankArray()
   patchheaders = list()
   patchesXMLoutput=list()
   xmloutput = str() 
@@ -136,8 +145,9 @@ def BankPrint(sysexfilename): # main meat and potatoes
     patchnumber=1
     bankname = BANK_PREFIX + ": " + x
     for patch in patchlist[BANK_SLICES[bankcounter]]:
+      needs = pnum[patchnumber -1]+"\""+ " Name=\"" +patch +" "
       #@TODO UPDATE patchnumber to contain A1, A2, ..., B1, B2, ... , ect..
-      needs = str(patchnumber)+"\""+ " Name=\"" +patch +" "
+      #needs = str(patchnumber)+"\""+ " Name=\"" +patch +" "
       #needs = BANK_PREFIX + ": " + BANKS[bankcounter] + " " +str(patchnumber).zfill(2) + " " +patch
       xmlout = "     <Patch Number=\""+ needs +"\" ProgramChange=\""+ str(patchnumber-1)+"\"/>\n"
       patchesXMLoutput.append(xmlout)
