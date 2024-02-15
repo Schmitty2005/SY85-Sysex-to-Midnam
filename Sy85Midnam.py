@@ -2,9 +2,9 @@
 import codecs
 
 ###############################################################################
-#      Needs to be used with SY85 Bulk dump SYNTH dump only!                 ##
-#                                                                            ##
-#                                                                            ##
+#      Needs to be used with SY85 Bulk dump SYNTH dump only!                  #
+#                                                                             #
+#                                                                             #
 #
 #
 # Two Required lines to use as  a library in another program :
