@@ -154,6 +154,7 @@ def BankPrint(sysexfilename): # main meat and potatoes
       patchnumber =patchnumber+1
     bankcounter=bankcounter+1
 
+
   counter = 0
   for x in BANKS:
      sp = (0, 64, 128, 192, 256, 320) # Bank Start positions
