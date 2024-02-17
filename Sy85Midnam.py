@@ -16,22 +16,25 @@ import codecs
 #
 #sysexfile = "vintage1_Synthall.syx"
 #
-#sysexfile = "vintage2.syx"
+sysexfile = "vintage2.syx"
 #sysexfile = "factory.syx"
+#sysexfile = "synth all FACTORY.syx"
+#sysecfile = "synth all TOP 40.syx"
 # Set name of sysex file here.
 
-sysexfile = "vintage1_synthAll.syx"       #name of SY85 Synth Bulk Sysex Dump
-midnamoutfile = "patchoutput.midnam"      #name of output file
-BANK_PREFIX = "Vintage 1"                 #Bank Name should be name of floppy disk set or similar
+#sysexfile = "vintage1_synthAll.syx"       #name of SY85 Synth Bulk Sysex Dump
+midnamoutfile = "vintg2_patchoutput.midnam"      #name of output file
+BANK_PREFIX = "Vintage 2"                 #Bank Name should be name of floppy disk set or similar
+#BANK_PREFIX = "Factory"                 #Bank Name should be name of floppy disk set or similar
 
 
 patchxmlinfo=""
 # Load SY85 Synth  Sysex file as bytearray
 
-BANKS =("V1", "V2", "V3", "V4", "P1", "P2")# change to more appropriate later
-BANK_CODE = ("00","03", "06", "09", "40", "43") #Hex for LSB of v1, v2,... ...p1, p2
+#BANKS =("Voice1", "Voice2", "Voice3", "Voice4", "Performance1", "P2")# change to more appropriate later
+BANK_CODE = ("00","03", "06", "09", "64", "67") #Hex for LSB of v1, v2,... ...p1, p2
 BANKS_VERBOSE=( "Voice 1", "Voice 2", "Voice 3", "Voice 4", "Performance 1", "Performance 2")
-
+BANKS = BANKS_VERBOSE
 PATCHBANK_HEADER = "<PatchBank Name=\"" +patchxmlinfo + "\">" # needs bank prefix and bank suffix from v1, v2, etc.
 #Define Global Bank Variable
 BP = list() 
@@ -145,15 +148,15 @@ def BankPrint(sysexfilename): # main meat and potatoes
     patchnumber=1
     bankname = BANK_PREFIX + ": " + x
     for patch in patchlist[BANK_SLICES[bankcounter]]:
-      needs = pnum[patchnumber -1]+"\""+ " Name=\"" +patch +" "
+      needs = pnum[patchnumber -1]+"\""+ " Name=\""  + pnum[patchnumber-1] + ": "+patch +" "
       #@TODO UPDATE patchnumber to contain A1, A2, ..., B1, B2, ... , ect..
       #needs = str(patchnumber)+"\""+ " Name=\"" +patch +" "
       #needs = BANK_PREFIX + ": " + BANKS[bankcounter] + " " +str(patchnumber).zfill(2) + " " +patch
       xmlout = "     <Patch Number=\""+ needs +"\" ProgramChange=\""+ str(patchnumber-1)+"\"/>\n"
       patchesXMLoutput.append(xmlout)
+      #print (needs)
       patchnumber =patchnumber+1
     bankcounter=bankcounter+1
-
 
   counter = 0
   for x in BANKS:
@@ -181,7 +184,7 @@ def BankPrint(sysexfilename): # main meat and potatoes
 
   
 xmlout2 = (BankPrint (sysexfile))
-print ("Data wrote to file : ")
+print ("Data wrote to file : "+ midnamoutfile)
 #print (xmlout2)
 
 savemidnam(xmlout2,midnamoutfile)
